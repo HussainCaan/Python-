@@ -55,13 +55,42 @@ perfect_squares = [x**2 for x in range(1,10) if x**2 % x == 0]
 
 negative_values = [-1,-5, 3,-7]
 absolute_values = [(x * -1) if x < 0 else x for x in negative_values]
-print(absolute_values)
+# print(absolute_values)
 
 lower_case = ['hello', 'world']
 upper_case = [x.upper() for x in lower_case]
-print(upper_case)
+# print(upper_case)
 
 given_list = ['cat', 'elephant', 'dog']
 list_of_Length_of_words = [len(x) for x in given_list]
-print(list_of_Length_of_words)
+# print(list_of_Length_of_words)
 
+
+# Intermediate problems to list comprehensions
+
+nested_list = [[1, 2], [3, 4], [5, 6]]
+flatend_list = [item for sublist in nested_list for item in sublist]
+# print(flatend_list)
+
+orignal_list = [1, 2, 3, 4]
+number_square = [(x, x**2) for x in orignal_list]
+# print(number_square)
+
+complete_list = ['apple', 'banana', 'orange']
+string_Start_Vowel = [x for x in complete_list if x[0] ==  'a' or x[0] == 'i' or x[0] =='u' or x[0] == 'o' or x[0] == 'e']
+# print(string_Start_Vowel)
+
+
+# get number greater than 5 and multiply by 2
+random_list = [1, 6, 3, 8, 4]
+solved_list = [x * 2 for x in random_list if x > 5]
+# print(solved_list)
+
+numbers = [1, 2, 3, 4]
+result = [f'{numbers[i]}-{numbers[i+1]}' for i in range(0, len(numbers), 2)]
+# print(result)
+
+list1 = [1, 2, 3]
+list2 = ['a', 'b', 'c']
+combined_list = [f'{x}{y}' for x,y in zip(list1, list2)]
+print(combined_list)
