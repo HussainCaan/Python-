@@ -48,6 +48,11 @@ if "name" in first_dict:
     pass
     # print("Name key exists in the dictionary")
 
+first_dict.pop("age") # Removes and returns the value associated with "age"  # This will raise a KeyError if "age" does not exist
+# print(first_dict)
+first_dict.popitem() # Removes and returns the last inserted key-value pair # This is useful in Python 3.7+ where dictionaries maintain insertion order
+# print(first_dict)
+ 
 
 
 # comphrehensions in dictionaries
