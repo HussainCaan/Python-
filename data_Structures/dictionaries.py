@@ -24,22 +24,33 @@ first_dict = {
 # Loops through dictionary
 for key in first_dict:
     if key != "Series":
-        # pass
-        print(f"{key}: {first_dict[key]}")
+        pass
+        # print(f"{key}: {first_dict[key]}")
     else:
         print("Series Details:")
         for sub_key in first_dict["Series"]:
-            print(f" {sub_key}: {first_dict['Series'][sub_key]}")
-            # pass
+            # print(f" {sub_key}: {first_dict['Series'][sub_key]}")
+            pass
 
 
 
+for key, values in first_dict.items():
+    if key!= "Series":
+        # print(f"{key} : {values}")
+        pass
+    else:
+        print("Series Details:")
+        for subKey, subvalues in first_dict["Series"].items():
+            # print(f" {subKey} : {subvalues}")
+            pass
+
+if "name" in first_dict:
+    pass
+    # print("Name key exists in the dictionary")
 
 
 
-
-
-
+# comphrehensions in dictionaries
 
 Series_Values_keys = [values for values in first_dict["Series"].keys()] # Output: ['name', 'seasons', 'genre'] compiling keys of nested dictionary into a list
 Series_Values_values = [values for values in first_dict["Series"].values()] # Output: ['Alice in Borderland', 3, 'Thriller'] compiling values of nested dictionary into a list
