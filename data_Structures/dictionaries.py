@@ -9,7 +9,39 @@ first_dict = {
     }
 }
 
-# print(first_dict["Series"]["name"])
+# print(first_dict["Series"]["name"]) # Output: "Alice in Borderland"
+# print(first_dict.get("age")) # Output: 20
+# # print(first_dict["namee"]) # This will raise a KeyError
+# print(first_dict.get("namee")) # Output: None ---------- This is the difference between using [] and get() method
+# first_dict["age"] = 21 # Updating age to 21
+# first_dict["country"] = "USA" # Adding a new key-value pair
+# del first_dict["city"] # Removing the key "city"
+# print(first_dict)
 
-Series_Values = [values for values in first_dict["Series"].keys()]
-print(Series_Values)
+
+
+
+# Loops through dictionary
+for key in first_dict:
+    if key != "Series":
+        # pass
+        print(f"{key}: {first_dict[key]}")
+    else:
+        print("Series Details:")
+        for sub_key in first_dict["Series"]:
+            print(f" {sub_key}: {first_dict['Series'][sub_key]}")
+            # pass
+
+
+
+
+
+
+
+
+
+
+Series_Values_keys = [values for values in first_dict["Series"].keys()] # Output: ['name', 'seasons', 'genre'] compiling keys of nested dictionary into a list
+Series_Values_values = [values for values in first_dict["Series"].values()] # Output: ['Alice in Borderland', 3, 'Thriller'] compiling values of nested dictionary into a list
+
+# print(Series_Values)
