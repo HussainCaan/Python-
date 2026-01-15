@@ -1,0 +1,31 @@
+def calculate_letter_grade(score):
+    """
+    Calculates the letter grade based on the numerical score.
+    """
+    if score >= 90:
+        return 'A'
+    elif score >= 80:
+        return 'B'
+    elif score >= 70:
+        return 'C'
+    elif score >= 60:
+        return 'D'
+    else:
+        return 'F'
+
+def grade_calculator_program():
+    try:
+        marks_input = input("Please enter the marks (0-100): ")
+        marks = float(marks_input)
+
+        if 0 <= marks <= 100:
+            grade = calculate_letter_grade(marks)
+            print(f"Grade: {grade}")
+        else:
+            print("Invalid marks. Please enter a value between 0 and 100.")
+            
+    except ValueError:
+        print("Invalid input. Please enter a numeric value.")
+
+if __name__ == "__main__":
+    grade_calculator_program()
