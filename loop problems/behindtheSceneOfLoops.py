@@ -35,3 +35,15 @@ print(I.__next__())  # OUTPUT: 4
 print(I.__next__())  # OUTPUT: 5
 # If we call I.__next__() again it will raise StopIteration exception because there are no more elements left in the list
 # This is how loops work behind the scenes in Python using iterators and the __next__ method.
+
+
+# NOte: This iter object is by defauly in files 
+# For example
+f = open("revereString.py")
+# Now we don't have to do 'iter(f)' because f is already an iterator object by default in python
+print(f.__next__())  # This will print the first line of the file
+print(f.__next__())  # This will print the second line of the file
+print(f.__next__())  # This will print the third line of the file
+# and so on until the end of the file is reached. the end of the file is reached.
+f.close()
+# This is how file objects work as iterators in Python.
