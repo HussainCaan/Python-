@@ -4,6 +4,7 @@
 # The syntax of a lambda function is:
 
 result = lambda parameter: parameter ** 3 # No name for the right side of the equal sign but it's assigned to the variable 'result' and will store that lambda function value. 
+print(result(4))  # OUTPUT: 64 # This will print 4 raised to the power of 3 which is 64
 # Complex problems using lambda
 database = [
     {'name': 'Alice', 'age': 30, 'city': 'New York'},
