@@ -12,5 +12,12 @@ print(f"Hello, {username}!")
 
 f = open("revereString.py")
 # print(f.readline()) # this will read the first line
-# print(f.readlines()) # this will read all the lines
-print(f.read()) # this will read the whole file
+# print(f.readlines()) # this will read all the lines  This method is now less commonly used because it loads all lines into memory at once.
+# print(f.read()) # this will read the whole file
+
+for line in f:
+    print(line, end='')  # end='' to avoid double newlines
+    time.sleep(1)  # Adding a delay of 1 second between printing each line
+f.close()
+# In the above code, we opened a file named 'revereString.py' and used a for loop to read and print each line one by one with a delay of 1 second.
+# This demonstrates how the for loop uses an iterator to go through each line in the file until
