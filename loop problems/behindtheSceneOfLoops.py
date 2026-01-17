@@ -15,9 +15,23 @@ f = open("revereString.py")
 # print(f.readlines()) # this will read all the lines  This method is now less commonly used because it loads all lines into memory at once.
 # print(f.read()) # this will read the whole file
 
-for line in f:
-    print(line, end='')  # end='' to avoid double newlines
-    time.sleep(1)  # Adding a delay of 1 second between printing each line
-f.close()
+# for line in f:
+#     print(line, end='')  # end='' to avoid double newlines
+#     time.sleep(1)  # Adding a delay of 1 second between printing each line
+# f.close()
 # In the above code, we opened a file named 'revereString.py' and used a for loop to read and print each line one by one with a delay of 1 second.
 # This demonstrates how the for loop uses an iterator to go through each line in the file until
+
+list1 = [1, 2, 3, 4, 5]
+I = iter(list1)  # Creating an iterator object from the list named as I
+print(I) # This will print the iterator object OUTPUT: <list_iterator object at 0x000001C5167D5150> this means that I is an iterator object and points to the memory address 0x000001C5167D5150
+# Now if we do this
+
+I.__next__()  # This will return the first element of the list OUTPUT: 1 but the I pointer will not move to the next element it's the __next__ method that moves the pointer to the next element and for the second I.__next__() call it will return 2 and so on.
+print(I.__next__())  # OUTPUT: 1
+print(I.__next__())  # OUTPUT: 2
+print(I.__next__())  # OUTPUT: 3
+print(I.__next__())  # OUTPUT: 4
+print(I.__next__())  # OUTPUT: 5
+# If we call I.__next__() again it will raise StopIteration exception because there are no more elements left in the list
+# This is how loops work behind the scenes in Python using iterators and the __next__ method.
