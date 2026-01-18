@@ -1,5 +1,36 @@
 # Generate a youtube manager app  in terminal onl for playlist management, favriorite videos adding and video removing from playlist. All this will happen in a txt file named "youtube_data.txt" 
 import json
+def video_exits(video_name):
+    try:
+        with open("youtube_data.txt", 'r') as file:
+            for line in file:
+                if video_name in line:
+                    return False
+        return True
+    except:
+        print("Error while reading file")
+        
+        
+def video_remover(video_name):
+    try:
+        with open("youtube_data.txt", "r") as file:
+            lines = file.readlines()
+
+        updated_lines = [line for line in lines if video_name not in line]
+
+        if len(updated_lines) == len(lines):
+            return False 
+
+        with open("youtube_data.txt", "w") as file:
+            file.writelines(updated_lines)
+
+        return True
+
+    except Exception as e:
+        print("Error while removing video:", e)
+        return False
+        
+        
 while True:
     print("Youtube Manager App")
     print("1. Add Video to Playlist")
@@ -13,8 +44,12 @@ while True:
         case '1':
             try:
                 with open('youtube_data.txt', 'a') as file:
-                    name = input("Enter video name: ")
-                    Video_Url = input("Enter video URL: ")
+                    name = input("👉 Enter video name: ")
+                    video_checker = video_exits(name)
+                    if video_checker == False:
+                        print("Video is already in the list")
+                        continue
+                    Video_Url = input("👉 Enter video URL: ")
                     data = {
                         "Video Name": name,
                         "Video_URL": Video_Url
@@ -24,5 +59,26 @@ while True:
                     file.write("\n")  # newline so each entry is on its own line
                 print("Video added ✅")
             except:
-                print("Error while updating the file")
-                
+                print("Error while updating the file ")
+
+        case '2':
+            video_name = input("👉 Enter the video name you want to remove: ")
+            checker = video_remover(video_name)
+            if checker == False:
+                print("👉 Video not Found")
+                continue
+            print("Video removed successfully ✅")
+        case '3':
+            try:
+                with open("youtube_data.txt", 'r') as file:
+                    print("Your Playlist:")
+                    for line in file:
+                        video_data = json.loads(line)
+                        print(f" - {video_data['Video Name']}: {video_data['Video_URL']}")
+            except:
+                print("Error while reading the file")
+        case '4':
+            video_name = input("👉 Enter the video name you want to update: ")
+            
+            
+            
