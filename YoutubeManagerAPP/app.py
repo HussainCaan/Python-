@@ -8,7 +8,7 @@ def video_exits(video_name):
                     return False
         return True
     except:
-        print("Error while reading file")
+        print("Error while reading file ❌")
         
         
 def video_remover(video_name):
@@ -27,10 +27,27 @@ def video_remover(video_name):
         return True
 
     except Exception as e:
-        print("Error while removing video:", e)
+        print("Error while removing video: ❌", e)
         return False
         
-        
+def video_updater(old_name, new_name, new_url):
+    try:
+        checker = video_remover(old_name)
+        if checker == False:
+            return False
+        with open('youtube_data.txt', 'a') as file:
+            data = {
+                "Video Name": new_name,
+                "Video_URL": new_url
+            }
+            json.dump(data, file, ensure_ascii=False)
+            file.write("\n") 
+        return True
+    except:
+        print("Error while reading file ❌")
+        return False
+    
+
 while True:
     print("Youtube Manager App")
     print("1. Add Video to Playlist")
@@ -47,7 +64,7 @@ while True:
                     name = input("👉 Enter video name: ")
                     video_checker = video_exits(name)
                     if video_checker == False:
-                        print("Video is already in the list")
+                        print("Video is already in the list 🚫")
                         continue
                     Video_Url = input("👉 Enter video URL: ")
                     data = {
@@ -59,13 +76,13 @@ while True:
                     file.write("\n")  # newline so each entry is on its own line
                 print("Video added ✅")
             except:
-                print("Error while updating the file ")
+                print("Error while updating the file 🚫")
 
         case '2':
             video_name = input("👉 Enter the video name you want to remove: ")
             checker = video_remover(video_name)
             if checker == False:
-                print("👉 Video not Found")
+                print("👉 Video not Found 🚫 ")
                 continue
             print("Video removed successfully ✅")
         case '3':
@@ -76,9 +93,21 @@ while True:
                         video_data = json.loads(line)
                         print(f" - {video_data['Video Name']}: {video_data['Video_URL']}")
             except:
-                print("Error while reading the file")
+                print("Error while reading the file 🚫")
         case '4':
             video_name = input("👉 Enter the video name you want to update: ")
-            
-            
-            
+            checker = video_exits(video_name)
+            if checker ==  False:
+                new_name = input("👉 Enter new video name: ")
+                new_url = input("👉 Enter new video URL: ")
+                video_updater_checker = video_updater(video_name, new_name, new_url)
+                if video_updater_checker == True:
+                    print("Video updated successfully ✅")
+            else:
+                print("👉 Video not Found 🚫 ")
+                continue 
+        case '5':
+            print("Exiting Youtube Manager App. Goodbye!")
+            break
+        case _:
+            print("❌ Invalid input! Please enter a choice between 1-5")
