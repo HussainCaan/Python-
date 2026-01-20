@@ -3,6 +3,8 @@ import requests
 def fetch_data(url):
     try:
         response = requests.get(url)
+        data = response.json()
+        
         
     
     except:
