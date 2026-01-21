@@ -18,8 +18,12 @@ def view_videos():
 def add_video(name, time, url):
     pass
 
-def update_video(video_id):
+def update_video(video_id, time, url):
     pass
+
+def delete_video(video_id):
+    pass
+
 def main():
     while True:
         print("\nYouTube Manager APP with SQLite3")
@@ -39,9 +43,18 @@ def main():
             add_video(name, time, url)
         elif choice == '3':
             video_id = input("Enter video ID to update: ")
-            update_video(video_id)
-
-
+            time = input("Enter video time: ")
+            url = input("Enter video URL: ")
+            update_video(video_id, time, url)
+            
+        elif choice == '4':
+            video_id = input("Enter video ID to delete: ")
+            delete_video(video_id)
+        elif choice == '5':
+            print("Exiting the application.")
+            break
+        else:
+            print("Invalid choice. Please try again.")
 
 if __name__ == "__main__":
     main()
