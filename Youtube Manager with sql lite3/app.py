@@ -13,16 +13,23 @@ cursor.execute('''
 ''')
 
 def view_videos():
-    pass
+    cursor.execute("SELECT * FROM videos")
+    for row in cursor.fetchall():
+        print(f"ID: {row[0]}, Name: {row[1]}, Time: {row[2]}, URL: {row[3]}")
 
 def add_video(name, time, url):
-    pass
+    cursor.execute("INSERT INTO videos (Name, time, URL) VALUES (?, ?, ?)", (name, time, url))
+    conn.commit()
+    
 
 def update_video(video_id, time, url):
-    pass
+    cursor.execute("UPDATE videos SET time = ?, URL = ? WHERE id = ?", (time, url, video_id))
+    conn.commit()
 
 def delete_video(video_id):
-    pass
+    cursor.execute("DELETE FROM videos WHERE id = ?", (video_id,))
+    conn.commit()
+
 
 def main():
     while True:
@@ -55,6 +62,7 @@ def main():
             break
         else:
             print("Invalid choice. Please try again.")
+    conn.close()
 
 if __name__ == "__main__":
     main()
